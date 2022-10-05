@@ -721,6 +721,11 @@ view: mbb_games_sr {
     drill_fields: [detail*]
   }
 
+  measure: total_points {
+    type: sum
+    sql: ${h_points} + ${a_points} ;;
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
