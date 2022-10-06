@@ -13,12 +13,12 @@ explore: total_points_arima {
   join: arima_explain_forecast {
     type: full_outer
     relationship: one_to_one
-    sql_on: ${input_data.game_date} = ${arima_explain_forecast.time_series_raw} ;;
+    sql_on: ${input_data.game_date_raw} = ${arima_explain_forecast.time_series_raw} ;;
   }
 
   join: arima_detect_anomalies {
     type: left_outer
     relationship: one_to_one
-    sql_on: ${input_data.game_date} = ${arima_detect_anomalies.time_series_raw} ;;
+    sql_on: ${input_data.game_date_raw} = ${arima_detect_anomalies.time_series_raw} ;;
   }
 }

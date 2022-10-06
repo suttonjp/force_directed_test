@@ -5,19 +5,23 @@ view: +input_data {
     sql: select mbb_games_sr.gametime as game_date
                 ,sum(mbb_games_sr.h_points + mbb_games_sr.a_points) as total_points
           from `bytecodeio-datablocks.ncaa_basketball.mbb_games_sr` as mbb_games_sr
-          where mbb_games_sr.gametime >= '2016-11-19' AND mbb_games_sr.gametime < '2017-04-02'
+          where mbb_games_sr.gametime >= '2016-11-19' AND mbb_games_sr.gametime < '2017-03-06'
           group by 1 order by 1 desc ;;
   }
 
-  dimension: game_date {
-    primary_key: yes
-    type: date
-    datatype: date
+
+  dimension_group: game_date {
+    type: time
+    timeframes: [
+      date,
+      week,
+      raw
+    ]
     sql: ${TABLE}.game_date ;;
   }
 
-  dimension: total_points {
-    type: number
+  measure: total_points {
+    type: sum
     sql: ${TABLE}.total_points ;;
   }
 }
