@@ -19,6 +19,55 @@ include: "/views/*.view.lkml"                # include all views in the views/ f
 #   }
 # }
 
+view: history {
+  derived_table: {
+    sql: SELECT * from history ;;
+  }
+
+  dimension: test {
+    sql: ${TABLE}.1 ;;
+  }
+}
+
+view: test {
+  derived_table: {
+    sql: select (
+            select column_name
+            from (select * from information_schema.columns order by column_name desc)
+            where table_name = 'history' and ordinal_position = 1
+            ) as first_column
+         from history;;
+  }
+
+  dimension: test_1 {
+    type: string
+    sql: ${TABLE}.first_column ;;
+  }
+}
+explore: test {}
+
+view: test_history {
+  derived_table: {
+    sql: select column_name from information_schema.columns where table_name = 'history' ;;
+  }
+
+  dimension: column_names {
+    type: string
+    sql: ${TABLE}.column_name ;;
+  }
+}
+explore: test_history {}
+
+view: table_names {
+  derived_table: {
+    sql: SELECT table_name from information_schema.tables ;;
+  }
+
+  dimension: table_name {
+    type: string
+    sql: ${TABLE}.table_name ;;
+  }
+}
 
 view: example {
   derived_table: {
@@ -48,6 +97,9 @@ view: star_example {
     sql: ${TABLE}.external_group_id;;
   }
 }
+
+explore: history {}
+explore: table_names {}
 
 explore: example {}
 
