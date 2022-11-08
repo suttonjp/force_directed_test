@@ -20,14 +20,22 @@ include: "/views/*.view.lkml"                # include all views in the views/ f
 # }
 
 view: history {
-  derived_table: {
-    sql: SELECT * from history ;;
-  }
+  sql_table_name: history ;;
 
   dimension: test {
-    sql: ${TABLE}.1 ;;
+    sql: ${TABLE}.title ;;
   }
 }
+
+# view: history {
+#   derived_table: {
+#     sql: SELECT * from history ;;
+#   }
+
+#   dimension: test {
+#     sql: ${TABLE}.1 ;;
+#   }
+# }
 
 view: test {
   derived_table: {
