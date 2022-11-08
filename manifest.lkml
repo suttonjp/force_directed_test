@@ -11,3 +11,11 @@ local_dependency: {
     value: "looker_scratch"
   }
 }
+
+# local_dependency: {
+#   project: "system__activity"
+# }
+
+local_dependency: {
+  project: "sutton_test"
+}
