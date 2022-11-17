@@ -730,6 +730,11 @@ view: mbb_games_sr {
     drill_fields: [detail*]
   }
 
+  measure: home_count_distinct {
+    type: count_distinct
+    sql: ${h_market} ;;
+  }
+
   measure: total_points {
     type: sum
     sql: ${h_points} + ${a_points} ;;
