@@ -1,4 +1,4 @@
-# project_name: "sutton_test"
+project_name: "system_activity_exploration"
 
 local_dependency: {
   project: "marketplace_https_github_com_looker_open_source_block_bqml_arima_git"
@@ -11,11 +11,3 @@ local_dependency: {
     value: "looker_scratch"
   }
 }
-
-# local_dependency: {
-#   project: "system__activity"
-# }
-
-# local_dependency: {
-#   project: "sutton_test"
-# }

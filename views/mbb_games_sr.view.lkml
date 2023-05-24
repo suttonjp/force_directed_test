@@ -421,11 +421,15 @@ view: mbb_games_sr {
   }
 
   dimension: h_fast_break_pts {
+    label: "Fast Break Points"
+    group_label: "Home Team"
     type: number
     sql: ${TABLE}.h_fast_break_pts ;;
   }
 
   dimension: h_field_goals_att {
+    label: "Field Goals Attempted"
+    group_label: "Home Team"
     type: number
     sql: ${TABLE}.h_field_goals_att ;;
   }
